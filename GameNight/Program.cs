@@ -21,6 +21,8 @@ System.Console.WriteLine("Leader: " + players[LeaderIndex(points)] + " with " + 
 System.Console.WriteLine($"Season total: {TotalPoints(points)}");
 
 int tonightTotal = 0;
+int highestScore = 0;
+string winner = " ";
 
 for(int i = 0; i < players.Length; i++)
 {
@@ -34,8 +36,21 @@ for(int i = 0; i < players.Length; i++)
 		tonightScore = Convert.ToInt32(Console.ReadLine());
 	}
 
+   // int currentPoints = Convert.ToInt32(points[i]);
+
+    if(tonightScore > highestScore)
+    {
+        highestScore = tonightScore;
+        winner = Convert.ToString(players[i]);
+    }
+
 	tonightTotal = tonightTotal + tonightScore;
+
+    int season = Convert.ToInt32(points[i] + tonightScore);
+    points[i] = season.ToString();
 }
+
+System.Console.WriteLine($"Tongiht's winner: {winner} with {highestScore}");
 
 //Methods
 static int LeaderIndex(string[] points)
